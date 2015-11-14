@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV['DATABASE_HOST'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  pool: 5
+
+development:
+  <<: *default
+  database: railsgirls_sample_development
+
+test:
+  <<: *default
+  database: railsgirls_sample_test
+
+production:
+  <<: *default
+  database: railsgirls_sample

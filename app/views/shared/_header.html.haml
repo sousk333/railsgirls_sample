@@ -1,0 +1,14 @@
+%nav.navbar.navbar-inverse.navbar-fixed-top
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle.collapsed{ "data-toggle": :collapse,
+        "data-target": "#bs-nabvar", "aria-expanded": false }
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to "The Idea app", root_path, class: "navbar-brand"
+    #bs-navbar.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li.active
+          = link_to "Idea", ideas_path
