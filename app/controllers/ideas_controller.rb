@@ -1,5 +1,6 @@
 class IdeasController < ApplicationController
   before_action :set_idea, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only: [:show, :edit, :update]
 
   # GET /ideas
   # GET /ideas.json
@@ -65,6 +66,10 @@ class IdeasController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_idea
       @idea = Idea.find(params[:id])
+    end
+
+    def set_comment
+      @comment = @idea.comments.build
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

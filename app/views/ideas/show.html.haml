@@ -15,7 +15,20 @@
   %br
   = image_tag(@idea.picture_url, width: 600) if @idea.picture.present?
 
+%h3 Comments
+%table.table.table-striped.table-condenced
+  %tbody
+    - @idea.comments.all.each do |comment|
+      %tr
+        %td
+          %strong= comment.user_name
+          %br
+          %p= comment.body
+          %p
+            = link_to 'Delete', comment_path(comment), method: :delete,
+              data: { confirm: '削除してもよろしいですか？' }
+
+= render 'comments/form'
+
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), ideas_path, :class => 'btn'
-  = link_to t('.edit', :default => t("helpers.links.edit")), edit_idea_path(@idea), :class => 'btn btn-primary'
-  = link_to t('.destroy', :default => t("helpers.links.destroy")), idea_path(@idea), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
