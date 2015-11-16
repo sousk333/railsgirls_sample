@@ -8,6 +8,12 @@
     = csrf_meta_tags
   %body
     = render "shared/header"
+
+    - if notice
+      .alert.alert-warning= notice
+    - if alert
+      .alert.alert-danger= alert
+
     .container
       = yield
     = render "shared/footer"
